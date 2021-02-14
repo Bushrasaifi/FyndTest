@@ -27,6 +27,10 @@ public class Consumer {
         String eventType = message.getEventType();
         boolean isAppend = true;
         long timestamp = System.currentTimeMillis() / (1000 * 60 * Integer.parseInt(timeLimit));
+        File theDir = new File("../files");
+        if (!theDir.exists()){
+            theDir.mkdirs();
+        }
         File file = new File("../files/" + eventType + "_"+timestamp+".txt");
         if (file.exists()) {
             long fileSizeInMB = getFileSize(file);
